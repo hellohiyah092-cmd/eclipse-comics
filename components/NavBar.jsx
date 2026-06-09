@@ -47,7 +47,8 @@ export default function NavBar() {
             { label: 'Home', href: '/' },
             { label: 'Browse', href: '/browse' },
             { label: 'Community', href: '/community' },
-            { label: 'Lore', href: '/lore' },
+            { label: 'Lore', href: '/lore' }
+				{ label: 'Collaborate', href: '/collaborate'},
           ].map(link => (
             <a key={link.label} href={link.href} style={{ fontFamily: 'Georgia,serif', fontSize: 13, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: '#444', textDecoration: 'none', padding: '8px 14px' }}>
               {link.label}
