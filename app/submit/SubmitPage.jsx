@@ -89,7 +89,7 @@ export default function SubmitPage() {
           <div style={{ marginBottom:32 }}>
             <label style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:12, letterSpacing:2, color:"#cc0000", display:"block", marginBottom:6 }}>ATTACH YOUR FILE (PDF OR WORD DOC)</label>
             <div style={{ border:"2px dashed #cc0000", padding:"32px", textAlign:"center", background:"#fff8f0" }}>
-              <input type="file" accept=".pdf,.doc,.docx" onChange={e=>setFile(e.target.files[0])} style={{ fontFamily:"Georgia,serif", fontSize:14 }} />
+              <input type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onChange={e=>setFile(e.target.files[0])} style={{ fontFamily:"Georgia,serif", fontSize:14 }} />
               <p style={{ fontFamily:"Georgia,serif", fontSize:12, color:"#999", marginTop:12 }}>Accepted: PDF, DOC, DOCX — Max 50MB</p>
               {file && <p style={{ fontFamily:"Georgia,serif", fontSize:13, color:"#cc0000", fontWeight:700, marginTop:8 }}>✓ {file.name}</p>}
             </div>
