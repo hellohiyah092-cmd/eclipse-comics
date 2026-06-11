@@ -85,7 +85,11 @@ export default function CollaboratePage() {
     setSubmitting(false)
   }
 
-  const filtered = filter === 'All' ? listings : listings.filter(l => l.creator_type === filter)
+const [searchUser, setSearchUser] = useState('')
+const filtered = listings.filter(l =>{
+	const matchFilter=filter==='All' || l.creator_type=== filter
+	const matchSearch=!searchUser || l.username.toLowerCase().includes(searchUser.toLowerCase())
+return matchFilter && matchSearch})
 
   const TYPE_COLORS = {
     'Writer': '#cc0000',
@@ -184,6 +188,12 @@ export default function CollaboratePage() {
             </button>
           </div>
         )}
+		
+<input value={searchUser} onChange={e=>setSearchUser(e.target.value)}
+  placeholder="Search creators by name..."
+  style={{ width:'100%', maxWidth:400, padding:'12px 16px', fontFamily:'Georgia,serif', fontSize:15, border:'2px solid #ddd', borderTop:'3px solid #cc0000', outline:'none', marginBottom:16, boxShadow:'3px 3px 0 #eee' }} />
+
+
 
         {/* FILTER */}
         <div style={{ display:'flex', gap:8, flexWrap:'wrap', marginBottom:32 }}>

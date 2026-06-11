@@ -8,7 +8,7 @@ export default function Footer() {
       </a>
       <p style={{ fontFamily: 'Georgia,serif', fontSize: 15, color: '#cc0000', fontStyle: 'italic', marginTop: 8, marginBottom: 32 }}>"The Shadow Has A Name."</p>
       <div style={{ display: 'flex', gap: 4, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
-        {[['Home','/'],['Browse','/browse'],['Submit','/submit'],['Community','/community'],['Collaborate','/collaborate'],['Lore','/lore']].map(([label,href]) => (
+        {[['Home','/'],['Browse','/browse'],['Submit','/submit'],['Community','/community'],['Collaborate','/collaborate'],['Lore','/lore'],['Dashboard','/dashboard'],['Leaderboard','/leaderboard'],].map(([label,href]) => (
           <a key={label} href={href} style={{ fontFamily: 'Georgia,serif', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', color: '#666', textDecoration: 'none', padding: '4px 12px' }}>{label}</a>
         ))}
       </div>

@@ -46,6 +46,8 @@ export default function ReadPage({ params }) {
   }
 
   const REACTIONS = ["❤️","💥","😱","🔥","👊","⚡"]
+  
+  
 
   const addReaction = async (emoji) => {
     if (!user) return
@@ -58,6 +60,47 @@ export default function ReadPage({ params }) {
       <div style={{ textAlign:"center", padding:"200px 24px", fontFamily:"Georgia,serif", color:"#999" }}>Loading...</div>
     </main>
   )
+  
+{/* ISSUE LIKES/DISLIKES */}
+<div style={{ marginBottom:48 }}>
+  <h2 style={{ fontFamily:"Georgia,serif", fontWeight:900, fontSize:20, letterSpacing:2, color:"#cc0000", marginBottom:16 }}>RATE THIS ISSUE</h2>
+  <div style={{ display:"flex", gap:12 }}>
+    <button onClick={()=>handleIssueVote('like')} style={{ background:"#fff", border:"3px solid #006600", fontFamily:"Georgia,serif", fontWeight:900, fontSize:16, padding:"12px 24px", cursor:"pointer", boxShadow:"3px 3px 0 #eee" }}>
+      👍 LIKE
+    </button>
+    <button onClick={()=>handleIssueVote('dislike')} style={{ background:"#fff", border:"3px solid #cc0000", fontFamily:"Georgia,serif", fontWeight:900, fontSize:16, padding:"12px 24px", cursor:"pointer", boxShadow:"3px 3px 0 #eee" }}>
+      👎 DISLIKE
+    </button>
+  </div>
+  {!user && <p style={{ fontFamily:"Georgia,serif", fontSize:13, color:"#999", marginTop:8 }}>Sign in to rate.</p>}
+</div>
+
+{/* UPDATE REQUESTS */}
+<div style={{ marginBottom:48 }}>
+  <h2 style={{ fontFamily:"Georgia,serif", fontWeight:900, fontSize:20, letterSpacing:2, color:"#cc0000", marginBottom:8 }}>REQUEST AN UPDATE</h2>
+  <p style={{ fontFamily:"Georgia,serif", fontSize:14, color:"#666", marginBottom:16 }}>Think something should be added or resolved in the next issue? Let the creator know.</p>
+  {user ? (
+    <div style={{ marginBottom:24 }}>
+      <textarea id="updateReq" rows={3} placeholder="What would you like to see resolved or added next?" style={{ width:"100%", padding:"12px 16px", fontFamily:"Georgia,serif", fontSize:15, border:"2px solid #ddd", borderTop:"3px solid #cc0000", outline:"none", marginBottom:12, resize:"vertical" }} />
+      <button onClick={async()=>{
+        const content = document.getElementById('updateReq').value
+        if (!content.trim()) return
+        await supabase.from('update_requests').insert({ user_id:user.id, issue_id:params.id, content })
+        document.getElementById('updateReq').value = ''
+        alert('Request posted!')
+      }} style={{ background:"#cc0000", color:"#fff", border:"3px solid #1a1a1a", fontFamily:"Georgia,serif", fontSize:14, fontWeight:900, letterSpacing:2, padding:"12px 28px", cursor:"pointer", boxShadow:"4px 4px 0 #1a1a1a" }}>
+        POST REQUEST →
+      </button>
+    </div>
+  ) : (
+    <p style={{ fontFamily:"Georgia,serif", fontSize:14, color:"#999" }}><a href="/auth" style={{ color:"#cc0000", fontWeight:700 }}>Sign in</a> to post a request.</p>
+  )}
+</div>
+
+
+
+
+
 
   if (!issue) return (
     <main style={{ background:"#f5f0e8", minHeight:"100vh" }}>
