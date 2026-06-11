@@ -85,11 +85,16 @@ export default function CollaboratePage() {
     setSubmitting(false)
   }
 
+
+
 const [searchUser, setSearchUser] = useState('')
-const filtered = listings.filter(l =>{
-	const matchFilter=filter==='All' || l.creator_type=== filter
-	const matchSearch=!searchUser || l.username.toLowerCase().includes(searchUser.toLowerCase())
-return matchFilter && matchSearch})
+const filtered = listings.filter(l => {
+  const matchFilter = filter === 'All' || l.creator_type === filter
+  const matchSearch = !searchUser || l.username.toLowerCase().includes(searchUser.toLowerCase())
+  return matchFilter && matchSearch
+})
+
+
 
   const TYPE_COLORS = {
     'Writer': '#cc0000',

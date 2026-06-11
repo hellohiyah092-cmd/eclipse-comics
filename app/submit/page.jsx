@@ -59,13 +59,16 @@ export default function SubmitPage() {
           <h1 style={{ fontFamily:"Georgia,serif", fontWeight:900, fontSize:"clamp(32px,6vw,56px)", color:"#1a1a1a", letterSpacing:-1, marginTop:8 }}>SEND IT IN.</h1>
           <p style={{ fontFamily:"Georgia,serif", fontSize:16, color:"#666", lineHeight:1.7, marginTop:12 }}>Your work must be fully finished — written, inked and coloured. The editor reviews every submission personally before anything goes live.</p>
         </div>
-
         <div style={{ background:"#fff", border:"3px solid #1a1a1a", boxShadow:"8px 8px 0 #cc0000", padding:"40px" }}>
           {/* Title */}
-          <div style={{ marginBottom:24 }}>
-            <label style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:12, letterSpacing:2, color:"#cc0000", display:"block", marginBottom:6 }}>NUMBER OF PAGES</label>
-            <input type="number" value={pageCount} onChange={e=>setPageCount(e.target.value)} placeholder="e.g. 24" min={5}}
-			 style={{width:"100%", padding:"12 px 16 px", fontFamily: "Georgia,serif", fontSize: 15, border:"2px solid #ddd", borderTop:"3px solid #cc0000", outline:"none"}} />
+          
+         <div style={{ marginBottom:24 }}>
+         <label style={{ fontFamily:"Georgia,serif", fontWeight:700, fontSize:12, letterSpacing:2, color:"#cc0000", display:"block", marginBottom:6 }}>NUMBER OF PAGES</label>
+           <input type="number" value={pageCount} onChange={e=>setPageCount(e.target.value)} placeholder="e.g. 24" min={1}
+           style={{ width:"100%", padding:"12px 16px", fontFamily:"Georgia,serif", fontSize:15, border:"2px solid #ddd", borderTop:"3px solid #cc0000", outline:"none" }} />
+          </div>
+
+            
             <input value={title} onChange={e=>setTitle(e.target.value)} placeholder="e.g. The Ashen Knight #7" style={{ width:"100%", padding:"12px 16px", fontFamily:"Georgia,serif", fontSize:15, border:"2px solid #ddd", borderTop:"3px solid #cc0000", outline:"none" }} />
           </div>
 
